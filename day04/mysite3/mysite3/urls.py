@@ -24,4 +24,6 @@ urlpatterns = [
     path('music/', include('music.urls')),
     # http://127.0.0.1:8000/sport/index
     path('sport/', include('sport.urls')),
+    # http://127.0.0.1:8000/bookstore/
+    path('bookstore/', include('bookstore.urls')),
 ]
