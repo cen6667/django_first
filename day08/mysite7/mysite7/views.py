@@ -10,6 +10,10 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
+from django.views.decorators.csrf import csrf_exempt
+
+import csv
+from upload_app.models import Content
 
 
 @cache_page(15)
@@ -66,3 +70,14 @@ def make_page_csv(request):
         writer.writerow([b])
 
     return response
+
+
+@csrf_exempt
+def test_upload(request):
+    if request.method == "GET":
+        return render(request, 'test_upload.html')
+    elif request.method == "POST":
+        title = request.POST['title']
+        myfile = request.FILES['myfile']
+        Content.objects.create(title=title, picture=myfile)
+        return HttpResponse('--上传成功--')
