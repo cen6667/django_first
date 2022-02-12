@@ -27,7 +27,9 @@ urlpatterns = [
     path('test_page', views.test_page),
     path('test_csv', views.test_csv),
     path('make_page_csv', views.make_page_csv),
-    path('test_upload', views.test_upload),
 
+    #day08
+    path('test_upload', views.test_upload)
 ]
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
