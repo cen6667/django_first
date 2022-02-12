@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'sport',
     'music',
     'bookstore',
+    'oto',
+    'otm',
+    'mtm',
 ]
 
 MIDDLEWARE = [

@@ -26,4 +26,8 @@ urlpatterns = [
     path('sport/', include('sport.urls')),
     # http://127.0.0.1:8000/bookstore/
     path('bookstore/', include('bookstore.urls')),
+    path('set_cookies', views.set_cookies),
+    path('get_cookies', views.get_cookies),
+    path('set_session', views.set_session),
+    path('get_session', views.get_session),
 ]

@@ -16,6 +16,8 @@ class Book(models.Model):
     class Meta:
         # 默认表名为app名_类名
         db_table = 'book'
+        verbose_name = '图书'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return '%s_%s_%s_%s' % (self.title, self.pub, self.price, self.market_price)
