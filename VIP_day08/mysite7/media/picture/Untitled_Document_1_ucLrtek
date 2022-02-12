@@ -1,0 +1,134 @@
+cd /mnt/hgfs/share_Django/
+
+django-admin.py startproject project_name
+
+python3 manage.py startapp app_name
+
+
+
+python3 manage.py makemigrations
+
+python3 manage.py migrate
+
+py
+
+mysql -u root -p
+rootrootroot
+
+create database mysite7 default charset utf8;
+create database d_user default charset utf8;
+use mysite3;
+
+desc bookstore_book;
+show tables;
+desc bookstore_author;
+select * from django_migrations\G;
+
+from bookstore.models import Book
+b1 = Book.objects.create(title='python', pub='qhcbs', price=20, market_price=25)
+
+b2 = Book(title='Django', pub='qhcbs', price=70, market_price=75)
+b2.save()
+
+b2 = Book(title='JQuery',pub='机械工业出版社',price=90,market_price=85)
+b2.save()
+b2 = Book(title='Linux',pub='机械工业出版社',price=80,market_price=65)
+b2.save()
+b2 = Book(title='HTML5',pub='清华大学出版社',price=90,market_price=105)
+b2.save()
+
+from bookstore.models import Author
+a1 = Author(name = '王老师', age = '28', email = 'wangweichao@tudu.com')
+a1.save()
+a1 = Author(name = '吕老师', age = '31', email = 'lvze@tudu.com')
+a1.save()
+a1 = Author(name = '祁老师', age = '30', email = 'qitx@tudu.com')
+a1.save()
+
+from bookstore.models import Book
+a1 = Book.objects.all()
+a1
+<QuerySet [<Book: python_qhcbs_20.00_25.00>, <Book: Django_qhcbs_70.00_75.00>, <Book: JQuery_机械工业出版社_90.00_85.00>, <Book: Linux_机械工业出版社_80.00_65.00>, <Book: HTML5_清华大学出版社_90.00_105.00>]>
+
+a2 = Book.objects.values('title', 'pub')
+a2
+<QuerySet [{'title': 'python', 'pub': 'qhcbs'}, {'title': 'Django', 'pub': 'qhcbs'}, {'title': 'JQuery', 'pub': '机械工业出版社'}, {'title': 'Linux', 'pub': '机械工业出版社'}, {'title': 'HTML5', 'pub': '清华大学出版社'}]>
+
+a3 = Book.objects.values_list('title', 'pub')
+a3
+<QuerySet [('python', 'qhcbs'), ('Django', 'qhcbs'), ('JQuery', '机械工业出版社'), ('Linux', '机械工业出版社'), ('HTML5', '清华大学出版社')]>
+for book in a3:
+	print(book[0])
+
+a4 = Book.objects.order_by('-price')
+a4
+<QuerySet [<Book: JQuery_机械工业出版社_90.00_85.00>, <Book: HTML5_清华大学出版社_90.00_105.00>, <Book: Linux_机械工业出版社_80.00_65.00>, <Book: Django_qhcbs_70.00_75.00>, <Book: python_qhcbs_20.00_25.00>]>
+
+a5 = Book.objects.values('title').order_by('-price')
+a5
+<QuerySet [{'title': 'JQuery'}, {'title': 'HTML5'}, {'title': 'Linux'}, {'title': 'Django'}, {'title': 'python'}]>
+a5 = Book.objects.order_by('-price').values('title')
+a5
+<QuerySet [{'title': 'JQuery'}, {'title': 'HTML5'}, {'title': 'Linux'}, {'title': 'Django'}, {'title': 'python'}]>
+
+b1 = Book.objects.filter(pub='qhcbs')
+b1
+<QuerySet [<Book: python_qhcbs_20.00_25.00>, <Book: Django_qhcbs_70.00_75.00>]>
+print(b1.query)
+SELECT `book`.`id`, `book`.`title`, `book`.`pub`, `book`.`price`, `book`.`market_price`, `book`.`info` FROM `book` WHERE `book`.`pub` = qhcbs
+
+
+b1 = Book.objects.filter(pub='qhcbs', title='Django')
+b1
+<QuerySet [<Book: Django_qhcbs_70.00_75.00>]>
+print(b1.query)
+SELECT `book`.`id`, `book`.`title`, `book`.`pub`, `book`.`price`, `book`.`market_price`, `book`.`info` FROM `book` WHERE (`book`.`pub` = qhcbs AND `book`.`title` = Django)
+
+(venv) D:\Django\untitled2>python manage.py shell
+>>> from oto.models import *
+>>> a1 = Author.objects.create(name='wang')
+>>> w1 = Wife.objects.create(name='wangfuren',author=a1)
+>>> a2 = Author.objects.create(name='guo')
+>>> w2 = Wife.objects.create(name='guofuren',author_id=2)
+
+(venv) D:\Django\untitled2>python manage.py shell
+>>> from otm.models import *
+>>> p1 = Publisher.objects.create(name = '中信出版社')
+>>> b1 = Book.objects.create(title = 'Python1',publisher=p1)
+>>> b2 = Book.objects.create(title = 'Python2',publisher_id=1)
+>>>
+
+>>> from mtm.models import *
+>>> a1 = Author.objects.create(name='guoxiaonao')
+>>> b1 = a1.book_set.create(title='python1')
+>>> a2 = Author.objects.create(name='wanglaoshi')
+>>> a2.book_set.add(b1)
+>>>
+
+>>> from django.contrib.auth.models import User
+>>> u = User.objects.create_user(username='ggg',password='123456')
+
+
+
+sudo pip3 install uwsgi==2.0.18
+uwsgi --ini uwsgi.ini
+uwsgi --stop uwsgi.pid
+ps aux|grep 'uwsgi'
+
+sudo lsof -i:8000
+sudo kill -9 [pid]
+
+sudo apt install nginx
+nginx -v
+sudo vim /etc/nginx/sites-enabled/default
+sudo service nginx restart
+http://127.0.0.1/test_upload
+
+
+
+
+
+
+
+
+
