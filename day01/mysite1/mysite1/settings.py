@@ -14,18 +14,25 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# print(BASE_DIR)
+# print(os.path.dirname(os.path.abspath(__file__)))
+# print(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o7n0m5uj*8y310rqngr5(=yxmu_8m*4wvoo=v333^74n@#p_lw'
+SECRET_KEY = '1%04r8ah&sko^3h2a2@coe%0h^9$avr-1at#@1)+$lal&8mi&!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# True调试模式
+# 1.检测到代码改变立即重启页面
+# 2.返回报错页面细节信息
+
+# 请求HOST头，过滤没用请求
+ALLOWED_HOSTS = ['192.168.80.133']
 
 
 # Application definition
@@ -103,9 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
