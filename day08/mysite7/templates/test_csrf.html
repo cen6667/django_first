@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>csrf</title>
+</head>
+<body>
+    <form action="/test_csrf" method="post">
+        {% csrf_token %} <!--设置暗号-->
+        <input type="text" name="username">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
