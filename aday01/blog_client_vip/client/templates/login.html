@@ -50,7 +50,9 @@ A ny individuals and organizations and not for commercial use, professiona websi
 				if (result.code == 200){
 					window.localStorage.setItem('dnblog_token',result.data.token);
 					window.localStorage.setItem('dnblog_user', result.username);
-					alert('登录成功')
+					alert('登录成功');
+					window.location.href = '/' + result.username + '/topics'
+
 				}else{
 					alert(result.error)
 				}
